@@ -4,9 +4,9 @@ import { auth } from "@/lib/firebase";
 import { mapFirebaseUser } from "../utils";
 
 export async function loginService(payload: LoginPayload) {
-    const { email, password } = payload;
+  const { email, password } = payload;
 
-    const result = await signInWithEmailAndPassword(auth, email, password);
+  const result = await signInWithEmailAndPassword(auth, email, password);
 
-    return mapFirebaseUser(result.user);
+  return mapFirebaseUser(result.user);
 }
