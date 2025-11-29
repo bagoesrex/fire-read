@@ -1,5 +1,5 @@
 import { User } from "firebase/auth";
-import { AuthUser } from "./types";
+import { AuthUser } from "../types/auth.types";
 
 export function mapFirebaseUser(user: User | null): AuthUser | null {
   if (!user) return null;

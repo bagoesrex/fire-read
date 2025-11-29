@@ -16,24 +16,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
-
-const formSchema = z.object({
-  email: z.string().trim().email({ message: "Please enter a valid email address." }),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters long." })
-    .max(100, { message: "Password must be at most 100 characters long." }),
-  name: z
-    .string()
-    .min(1, { message: "Name is required." })
-    .max(100, { message: "Name must be at most 100 characters long." }),
-});
+import { registerFormSchema } from "../utils/validate-auth";
 
 export default function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof registerFormSchema>>({
+    resolver: zodResolver(registerFormSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -41,7 +30,7 @@ export default function RegisterForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof registerFormSchema>) {
     // Todo OnSubmit
   }
 
