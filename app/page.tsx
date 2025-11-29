@@ -2,7 +2,7 @@ import HeroSection from "@/components/home/hero-section";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="relative w-full">
       <HeroSection />
     </main>
   );

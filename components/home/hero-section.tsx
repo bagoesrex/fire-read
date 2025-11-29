@@ -4,8 +4,8 @@ import { BookOpenText, MoveUpRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section id="hero">
-      <MaxWidthWrapper className="flex px-5 py-18">
+    <section id="hero" className="relative">
+      <MaxWidthWrapper className="flex px-15 py-18">
         <div className="flex-1/2 space-y-5">
           <h1 className="text-5xl leading-tight font-light">
             Happy Reading, <br /> Megumine
@@ -32,6 +32,7 @@ export default function HeroSection() {
           <cite className="text-muted-foreground -mt-0.5 block text-sm">- Megumine</cite>
         </div>
       </MaxWidthWrapper>
+      <div className="absolute top-0 -z-50 h-full w-full rounded-bl-[80px] bg-red-300" />
     </section>
   );
 }
