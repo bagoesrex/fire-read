@@ -33,7 +33,6 @@ export default function RootLayout({
           <AuthProvider>
             <SidebarProvider>
               <AppSidebar />
-              {/* <Header /> */}
               {children}
             </SidebarProvider>
           </AuthProvider>
