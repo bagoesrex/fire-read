@@ -1,6 +1,14 @@
 "use client";
 
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import {
+  ChartBarStacked,
+  CircleQuestionMark,
+  Heart,
+  Home,
+  LogOut,
+  Settings,
+  Trophy,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -13,31 +21,44 @@ import {
 } from "@/components/ui/sidebar";
 import SidebarItem from "./sidebar-item";
 
-const items = [
+const firstMenuItems = [
   {
     title: "Home",
     url: "/",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Categories",
+    url: "/categories",
+    icon: ChartBarStacked,
   },
   {
-    title: "Calendar",
+    title: "Leaderboard",
     url: "#",
-    icon: Calendar,
+    icon: Trophy,
   },
   {
-    title: "Search",
+    title: "Favorite",
     url: "#",
-    icon: Search,
+    icon: Heart,
   },
+];
+
+const secondMenuItems = [
   {
     title: "Settings",
     url: "#",
     icon: Settings,
+  },
+  {
+    title: "Help",
+    url: "#",
+    icon: CircleQuestionMark,
+  },
+  {
+    title: "Log Out",
+    url: "#",
+    icon: LogOut,
   },
 ];
 
@@ -46,11 +67,20 @@ export default function AppSidebar() {
     <Sidebar className="p-4">
       <SidebarHeader className="font-bold">FIRE READ</SidebarHeader>
       <SidebarContent className="mt-3">
-        <SidebarGroup>
+        <SidebarGroup className="border-b-2">
           <SidebarGroupLabel>MENU</SidebarGroupLabel>
           <SidebarGroupContent>
+            <SidebarMenu className="my-2 gap-1.5">
+              {firstMenuItems.map((item) => (
+                <SidebarItem key={item.title} icon={item.icon} title={item.title} href={item.url} />
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupContent>
             <SidebarMenu className="mt-2 gap-1.5">
-              {items.map((item) => (
+              {secondMenuItems.map((item) => (
                 <SidebarItem key={item.title} icon={item.icon} title={item.title} href={item.url} />
               ))}
             </SidebarMenu>

@@ -15,16 +15,21 @@ import { logoutService } from "@/features/auth/services/logout-service";
 import LoginDialog from "@/features/auth/components/login-dialog";
 import { useState } from "react";
 import RegisterDialog from "@/features/auth/components/register-dialog";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const { user } = useAuth();
 
   const [loginOpen, setLoginOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
 
   return (
-    <header className="z-50 bg-red-200/70">
-      <div className="mx-auto flex max-w-6xl items-center justify-end px-10 pt-5">
+    <header
+      className={`fixed top-0 z-50 w-full border-b md:w-[calc(100%-var(--sidebar-width))] md:border-none ${isHome && "border-none"}`}
+    >
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-end px-15 py-5">
         {/* <div className="flex items-center gap-2">
           <div className="relative">
             <Book size={30} strokeWidth={1} strokeOpacity={0.6} className="-rotate-4" />

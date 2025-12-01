@@ -5,6 +5,7 @@ import QueryProvider from "@/providers/query-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/layout/sidebar/app-sidebar";
 import { AuthProvider } from "@/features/auth/providers/auth-provider";
+import Header from "@/components/layout/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,10 @@ export default function RootLayout({
           <AuthProvider>
             <SidebarProvider>
               <AppSidebar />
-              {children}
+              <main className="relative w-full">
+                <Header />
+                {children}
+              </main>
             </SidebarProvider>
           </AuthProvider>
         </QueryProvider>
