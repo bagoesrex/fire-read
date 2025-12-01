@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, Book, ChevronDown, Flame, User } from "lucide-react";
+import { Bell, ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -9,13 +9,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Avatar } from "@radix-ui/react-avatar";
-import { AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarImage } from "../ui/avatar";
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import { logoutService } from "@/features/auth/services/logout-service";
+import LoginDialog from "@/features/auth/components/login-dialog";
+import { useState } from "react";
+import RegisterDialog from "@/features/auth/components/register-dialog";
 
 export default function Header() {
   const { user } = useAuth();
+
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
 
   return (
     <header className="z-50 bg-red-300">
@@ -68,7 +73,7 @@ export default function Header() {
                 variant={"ghost"}
               >
                 {user && (
-                  <Avatar className="h-9 w-9 overflow-hidden rounded-full">
+                  <Avatar className="h-8 w-8 overflow-hidden">
                     <AvatarImage src={"chino.webp"} alt={"User"} />
                     {/* <AvatarFallback>
                   </AvatarFallback> */}
@@ -82,12 +87,29 @@ export default function Header() {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="end">
+              {user ? (
+                <>
+                  <DropdownMenuItem>{user.email}</DropdownMenuItem>
+                </>
+              ) : (
+                <>
+                  <DropdownMenuItem onClick={() => setLoginOpen(true)}>Sign In</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setRegisterOpen(true)}>Sign Up</DropdownMenuItem>
+                </>
+              )}
+              <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={logoutService}>Logout</DropdownMenuItem>
+              {user && (
+                <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={logoutService}>Logout</DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
+          <RegisterDialog open={registerOpen} onOpenChange={setRegisterOpen} />
+          <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
           <Bell strokeWidth={2} size={20} />
         </div>
       </div>

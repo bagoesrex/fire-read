@@ -17,8 +17,13 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { loginFormSchema } from "../utils/validate-auth";
+import { loginService } from "../services/login-service";
 
-export default function LoginForm() {
+interface LoginFormProps {
+  closeDialog: () => void;
+}
+
+export default function LoginForm({ closeDialog }: LoginFormProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
@@ -30,12 +35,21 @@ export default function LoginForm() {
   });
 
   async function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    // Todo OnSubmit
+    setIsLoading(true);
+
+    try {
+      await loginService(values);
+      closeDialog();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-5 mb-2 space-y-5 px-5">
         <FormField
           control={form.control}
           name="email"
@@ -68,16 +82,26 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Loading...
-            </>
-          ) : (
-            "Submit"
-          )}
-        </Button>
+        <div className="mt-10 flex flex-row gap-2">
+          <Button
+            type="button"
+            className="h-13 w-30 border-2"
+            variant={"ghost"}
+            onClick={closeDialog}
+          >
+            Cancel
+          </Button>
+          <Button type="submit" className="h-13 flex-1" disabled={isLoading}>
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              "Sign In"
+            )}
+          </Button>
+        </div>
       </form>
     </Form>
   );
