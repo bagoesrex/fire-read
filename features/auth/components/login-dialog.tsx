@@ -6,7 +6,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import LoginForm from "./login-form";
-import { UserRoundPlus } from "lucide-react";
 
 interface LoginDialogProps {
   open: boolean;
