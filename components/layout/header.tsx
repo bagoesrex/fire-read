@@ -23,8 +23,8 @@ export default function Header() {
   const [registerOpen, setRegisterOpen] = useState(false);
 
   return (
-    <header className="z-50 bg-red-300">
-      <div className="mx-auto flex max-w-6xl items-center justify-end px-10 pt-10">
+    <header className="z-50 bg-red-200/70">
+      <div className="mx-auto flex max-w-6xl items-center justify-end px-10 pt-5">
         {/* <div className="flex items-center gap-2">
           <div className="relative">
             <Book size={30} strokeWidth={1} strokeOpacity={0.6} className="-rotate-4" />

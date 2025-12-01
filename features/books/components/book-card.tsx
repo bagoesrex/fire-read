@@ -10,7 +10,7 @@ interface BookCardProps {
 export default function BookCard({ book }: BookCardProps) {
   return (
     <Card className="group relative w-full overflow-hidden rounded-sm p-0">
-      <div className="relative h-72 w-full">
+      <div className="relative h-60 w-full">
         <Image
           src={"/book-placeholder.webp"}
           alt={book.title}
