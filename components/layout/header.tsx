@@ -12,13 +12,14 @@ import {
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useAuth } from "@/features/auth/hooks/use-auth";
+import { logoutService } from "@/features/auth/services/logout-service";
 
 export default function Header() {
   const { user } = useAuth();
 
   return (
     <header className="z-50 bg-red-300">
-      <div className="mx-auto flex max-w-6xl items-center justify-end p-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-end px-10 pt-10">
         {/* <div className="flex items-center gap-2">
           <div className="relative">
             <Book size={30} strokeWidth={1} strokeOpacity={0.6} className="-rotate-4" />
@@ -84,7 +85,7 @@ export default function Header() {
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => {}}>Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={logoutService}>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <Bell strokeWidth={2} size={20} />
