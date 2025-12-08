@@ -6,6 +6,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/layout/sidebar/app-sidebar";
 import { AuthProvider } from "@/features/auth/providers/auth-provider";
 import Header from "@/components/layout/header";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
                 <Header />
                 {children}
               </main>
+              <Toaster richColors />
             </SidebarProvider>
           </AuthProvider>
         </QueryProvider>
