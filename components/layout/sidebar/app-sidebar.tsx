@@ -1,92 +1,111 @@
 "use client";
 
 import {
-  ChartBarStacked,
-  CircleQuestionMark,
-  Heart,
+  Bookmark,
+  BookOpen,
+  Flame,
   Home,
-  LogOut,
+  LucideIcon,
+  MessageCircle,
   Settings,
+  Tag,
   Trophy,
+  User,
 } from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
 } from "@/components/ui/sidebar";
 import SidebarItem from "./sidebar-item";
+import IconCard from "@/components/ui/icon-card";
 
-const firstMenuItems = [
+interface SidebarMenuItem {
+  title: string;
+  url: string;
+  icon: LucideIcon;
+}
+
+const menuItems: SidebarMenuItem[] = [
   {
-    title: "Home",
+    title: "Dashboard",
     url: "/",
     icon: Home,
   },
   {
+    title: "Books",
+    url: "/books",
+    icon: BookOpen,
+  },
+  {
+    title: "Questions",
+    url: "/questions",
+    icon: MessageCircle,
+  },
+  {
     title: "Categories",
     url: "/categories",
-    icon: ChartBarStacked,
+    icon: Tag,
+  },
+  {
+    title: "Bookmarks",
+    url: "/bookmarks",
+    icon: Bookmark,
   },
   {
     title: "Leaderboard",
-    url: "#",
+    url: "/leaderboard",
     icon: Trophy,
-  },
-  {
-    title: "Favorite",
-    url: "#",
-    icon: Heart,
   },
 ];
 
-const secondMenuItems = [
+const footerItems: SidebarMenuItem[] = [
+  {
+    title: "Profile",
+    url: "/profile",
+    icon: User,
+  },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
     icon: Settings,
-  },
-  {
-    title: "Help",
-    url: "#",
-    icon: CircleQuestionMark,
-  },
-  {
-    title: "Log Out",
-    url: "#",
-    icon: LogOut,
   },
 ];
 
 export default function AppSidebar() {
   return (
-    <Sidebar className="p-4">
-      <SidebarHeader className="font-bold">FIRE READ</SidebarHeader>
-      <SidebarContent className="mt-3">
-        <SidebarGroup className="border-b-2">
-          <SidebarGroupLabel>MENU</SidebarGroupLabel>
+    <Sidebar>
+      <SidebarHeader className="flex flex-row items-center border-b border-gray-950 px-3 py-4.5">
+        <IconCard icon={Flame} />
+        <span className="text-xl font-semibold">FireRead</span>
+      </SidebarHeader>
+      <SidebarContent className="mt-1">
+        <SidebarGroup className="py-0">
           <SidebarGroupContent>
-            <SidebarMenu className="my-2 gap-1.5">
-              {firstMenuItems.map((item) => (
-                <SidebarItem key={item.title} icon={item.icon} title={item.title} href={item.url} />
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu className="mt-2 gap-1.5">
-              {secondMenuItems.map((item) => (
+            <SidebarMenu className="my-2 gap-0.5">
+              {menuItems.map((item) => (
                 <SidebarItem key={item.title} icon={item.icon} title={item.title} href={item.url} />
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter className="border-t border-gray-950 p-0">
+        <SidebarGroup className="py-0">
+          <SidebarGroupContent>
+            <SidebarMenu className="my-2 gap-0.5">
+              {footerItems.map((item) => (
+                <SidebarItem key={item.title} icon={item.icon} title={item.title} href={item.url} />
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarFooter>
     </Sidebar>
   );
 }

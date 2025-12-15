@@ -20,7 +20,7 @@ export default function SidebarItem({ icon: Icon, title, href }: SidebarItemProp
       <SidebarMenuButton asChild className="h-fit space-x-2">
         <Link href={href} className="flex items-center gap-2">
           <div
-            className={`rounded-xl p-2 transition-colors ${active ? "bg-red-500 text-white" : "bg-muted"} `}
+            className={`rounded-xl p-2 transition-colors ${active ? "bg-orange-400 text-white" : "bg-muted"} `}
           >
             <Icon size={20} className={`${active ? "text-white" : "text-gray-500"}`} />
           </div>
