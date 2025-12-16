@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import { Book } from "../types/book.types";
-import { Button } from "@/components/ui/button";
+import { Book } from "@/types/book";
+import { Bookmark, Eye, Star } from "lucide-react";
 
 interface BookCardProps {
   book: Book;
@@ -9,27 +9,41 @@ interface BookCardProps {
 
 export default function BookCard({ book }: BookCardProps) {
   return (
-    <Card className="group relative w-full overflow-hidden rounded-sm p-0">
-      <div className="relative h-60 w-full">
+    <Card className="group relative w-full overflow-hidden rounded-xl p-0">
+      <div className="relative aspect-3/4 w-full">
         <Image
-          src={"/book-placeholder.webp"}
+          src="/book-placeholder.webp"
           alt={book.title}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
 
-        <div className="absolute inset-0 flex flex-col justify-end bg-black/60 p-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <h3 className="line-clamp-2 text-lg font-semibold">{book.title}</h3>
-          <p className="text-sm opacity-80">by {book.author}</p>
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
 
-          <p className="mt-2 line-clamp-3 text-xs text-white/90">{book.description}</p>
+        <div className="absolute z-10 flex size-full flex-col justify-between p-3">
+          <div className="flex items-start justify-between gap-3">
+            <span className="rounded-md bg-white/80 px-1.5 py-0.5 text-xs">{book.category}</span>
+            <div className="rounded-md bg-orange-400 p-1.5">
+              <Bookmark className="fill-white text-white" size={17} />
+            </div>
+          </div>
 
-          <Button
-            type="button"
-            className="mt-3 w-fit rounded bg-white/90 px-2 py-0 text-xs font-medium text-black hover:bg-white"
-          >
-            Read More
-          </Button>
+          <div className="space-y-2">
+            <div>
+              <h3 className="line-clamp-2 text-lg font-semibold text-white">{book.title}</h3>
+              <p className="text-sm text-white/80">{book.author}</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5">
+                <Star className="h-4 w-4 fill-orange-400 stroke-orange-400" />
+                <span className="text-sm text-white/80">{book.rating}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Eye className="h-4 w-4 text-white/80" />
+                <span className="text-sm text-white/80">{book.views}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Card>

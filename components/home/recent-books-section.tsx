@@ -6,9 +6,10 @@ import BookCard from "@/features/books/components/book-card";
 import IconCard from "../ui/icon-card";
 import { BookOpen, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { books } from "@/data/dummy-books";
 
 export default function RecentBooksSection() {
-  const { data: books } = useBooks();
+  // const { data: books } = useBooks();
 
   return (
     <section id="recent-books">
@@ -20,7 +21,7 @@ export default function RecentBooksSection() {
               <h2 className="text-2xl leading-tight font-medium">Recent Books</h2>
             </div>
             <Link
-              href="/categories"
+              href="/books"
               className="group flex items-center gap-1.5 text-sm transition-colors"
             >
               <span className="transition-colors group-hover:text-orange-400">View all</span>
@@ -31,11 +32,11 @@ export default function RecentBooksSection() {
               />
             </Link>
           </div>
-          {books?.length === 0 ? (
+          {books.length === 0 ? (
             <p>No books available</p>
           ) : (
-            <div className="grid grid-cols-5 gap-6">
-              {books?.map((book) => (
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
+              {books.map((book) => (
                 <BookCard key={book.author} book={book} />
               ))}
             </div>
