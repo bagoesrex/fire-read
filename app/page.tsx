@@ -1,11 +1,13 @@
 import HeroSection from "@/components/home/hero-section";
-import RecommendationSection from "@/components/home/recent-books-section";
+import RecentBooksSection from "@/components/home/recent-books-section";
+import TrendingQuestionsSection from "@/components/home/trending-questions-section";
 
 export default function HomePage() {
   return (
     <main>
       <HeroSection />
-      <RecommendationSection />
+      <RecentBooksSection />
+      <TrendingQuestionsSection />
     </main>
   );
 }

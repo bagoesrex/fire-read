@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Book } from "@/types/book";
 import { Bookmark, Eye, Star } from "lucide-react";
+import TagBadge from "@/components/ui/tag-badge";
 
 interface BookCardProps {
   book: Book;
@@ -22,7 +23,7 @@ export default function BookCard({ book }: BookCardProps) {
 
         <div className="absolute z-10 flex size-full flex-col justify-between p-3">
           <div className="flex items-start justify-between gap-3">
-            <span className="rounded-md bg-white/80 px-1.5 py-0.5 text-xs">{book.category}</span>
+            <TagBadge label={book.category} />
             <div className="rounded-md bg-orange-400 p-1.5">
               <Bookmark className="fill-white text-white" size={17} />
             </div>
