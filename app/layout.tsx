@@ -36,7 +36,7 @@ export default function RootLayout({
             <SidebarProvider>
               <AppSidebar />
               <main className="relative w-full">
-                <Header />
+                {/* <Header /> */}
                 {children}
               </main>
               <Toaster richColors />

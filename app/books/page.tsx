@@ -1,3 +1,5 @@
+import BooksWrapper from "@/components/books/books-wrapper";
+
 export default function BooksPage() {
-  return <h1 className="mt-30 text-3xl font-bold">Books</h1>;
+  return <BooksWrapper />;
 }
