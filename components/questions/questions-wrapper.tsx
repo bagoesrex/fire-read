@@ -32,9 +32,7 @@ export default function QuestionsWrapper() {
                 <TabsList>
                   <TabsTrigger value="trending" className="space-x-1">
                     <TrendingUp className="size-3.5" />
-                    <span>
-                      Trending
-                    </span>
+                    <span>Trending</span>
                   </TabsTrigger>
                   <TabsTrigger value="recent" className="space-x-1">
                     <Clock className="size-3.5" />
