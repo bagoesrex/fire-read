@@ -1,5 +1,3 @@
-import { questions } from "@/data/dummy-questions";
-import QuestionCard from "@/features/questions/components/question-card";
 import { ChevronRight, MessageCircle } from "lucide-react";
 import MaxWidthWrapper from "../layout/max-width-wrapper";
 import IconCard from "../ui/icon-card";
