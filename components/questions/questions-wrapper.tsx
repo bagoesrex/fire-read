@@ -1,8 +1,9 @@
-import { MessageCircle } from "lucide-react";
+import { Clock, MessageCircle, TrendingUp } from "lucide-react";
 import MaxWidthWrapper from "../layout/max-width-wrapper";
 import IconCard from "../ui/icon-card";
 import { questions } from "@/data/dummy-questions";
 import QuestionCard from "@/features/questions/components/question-card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 export default function QuestionsWrapper() {
   return (
@@ -26,11 +27,34 @@ export default function QuestionsWrapper() {
           {questions.length === 0 ? (
             <p>No questions available</p>
           ) : (
-            <div className="grid-cols grid gap-6">
-              {questions.map((question) => (
-                <QuestionCard key={question.id} question={question} />
-              ))}
-            </div>
+            <>
+              <Tabs defaultValue="trending" className="w-[400px]">
+                <TabsList>
+                  <TabsTrigger value="trending" className="space-x-1">
+                    <TrendingUp className="size-3.5" />
+                    <span>
+                      Trending
+                    </span>
+                  </TabsTrigger>
+                  <TabsTrigger value="recent" className="space-x-1">
+                    <Clock className="size-3.5" />
+                    <span>Recent</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="unanswered" className="space-x-1">
+                    <MessageCircle className="size-3.5" />
+                    <span>Unanswered</span>
+                  </TabsTrigger>
+                </TabsList>
+                <TabsContent value="trending">Trending content</TabsContent>
+                <TabsContent value="recent">Recent</TabsContent>
+                <TabsContent value="unanswered">Unanswered</TabsContent>
+              </Tabs>
+              <div className="grid-cols grid gap-6">
+                {questions.map((question) => (
+                  <QuestionCard key={question.id} question={question} />
+                ))}
+              </div>
+            </>
           )}
         </div>
       </MaxWidthWrapper>
