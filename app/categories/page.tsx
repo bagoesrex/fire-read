@@ -1,5 +1,5 @@
-import HeroSection from "@/components/categories/hero-section";
+import CategoriesWrapper from "@/components/categories/categories-wrapper";
 
 export default function CategoriesPage() {
-  return <HeroSection />;
+  return <CategoriesWrapper />;
 }
