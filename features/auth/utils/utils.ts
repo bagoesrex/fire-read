@@ -7,7 +7,7 @@ export function mapFirebaseUser(user: User | null): AuthUser | null {
   return {
     uid: user.uid,
     email: user.email,
-    displayName: user.displayName,
+    username: user.displayName,
     photoURL: user.photoURL,
   };
 }

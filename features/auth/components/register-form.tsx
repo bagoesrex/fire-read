@@ -31,7 +31,7 @@ export default function RegisterForm({ closeDialog }: RegisterFormProps) {
     defaultValues: {
       email: "",
       password: "",
-      name: "",
+      username: "",
     },
   });
 
@@ -86,12 +86,12 @@ export default function RegisterForm({ closeDialog }: RegisterFormProps) {
         />
         <FormField
           control={form.control}
-          name="name"
+          name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input id="name" type="text" placeholder="Si Kucink" {...field} />
+                <Input id="username" type="text" placeholder="Si Kucink" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

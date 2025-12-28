@@ -6,10 +6,10 @@ export const registerFormSchema = z.object({
     .string()
     .min(8, { message: "Password must be at least 8 characters long." })
     .max(100, { message: "Password must be at most 100 characters long." }),
-  name: z
+  username: z
     .string()
-    .min(1, { message: "Name is required." })
-    .max(100, { message: "Name must be at most 100 characters long." }),
+    .min(1, { message: "Username is required." })
+    .max(100, { message: "Username must be at most 100 characters long." }),
 });
 
 export const loginFormSchema = z.object({

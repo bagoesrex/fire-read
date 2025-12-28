@@ -1,14 +1,14 @@
 export interface AuthUser {
   uid: string;
   email: string | null;
-  displayName?: string | null;
+  username: string | null;
   photoURL?: string | null;
 }
 
 export interface RegisterPayload {
   email: string;
   password: string;
-  displayName?: string;
+  username: string;
 }
 
 export interface LoginPayload {
